@@ -88,7 +88,10 @@ def callback(call):
         cursor.execute(select)
         connection.commit()
         users = cursor.fetchall()
-        bot.send_message(call.message.chat.id, f"{users}")
+        name = ''
+        for user in users:
+            name += user[2]+", "
+        bot.send_message(call.message.chat.id, f"name: {name}")
     elif call.data == "avelacnel":
         bot.send_message(call.message.chat.id, "Greq ayd mardu telegram aydin")
         @bot.message_handler(content_types=["text"])
